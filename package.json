@@ -1,0 +1,51 @@
+{
+  "name": "@srleecode/angular-copilot-prompt-mcp-server",
+  "version": "0.0.12",
+  "description": "MCP server for providing context to help with Angular related github copilot prompts",
+  "license": "MIT",
+  "author": "srleecode",
+  "homepage": "https://github.com/srleecode/angular-copilot-prompt-mcp-server",
+  "bugs": "https://github.com/srleecode/angular-copilot-prompt-mcp-server/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srleecode/angular-copilot-prompt-mcp-server.git"
+  },
+  "type": "module",
+  "bin": {
+    "angular-copilot-prompt-mcp-server": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist/**/* --glob && tsc && shx chmod +x dist/*.js",
+    "watch": "tsc --watch",
+    "inspect": "run-script-os",
+    "inspect:windows": "concurrently \"npm run watch\" \"npx @modelcontextprotocol/inspector node ./dist/index.js %INIT_CWD:\\=/%\"",
+    "inspect:default": "concurrently \"npm run watch\" \"npx @modelcontextprotocol/inspector node ./dist/index.js $INIT_CWD\"",
+    "test": "jest --config jest.config.cjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.1",
+    "diff": "^5.2.0",
+    "glob": "^10.4.5",
+    "minimatch": "^10.0.1",
+    "minisearch": "^7.1.2",
+    "uuid": "^11.1.0",
+    "zod-to-json-schema": "^3.24.5"
+  },
+  "devDependencies": {
+    "@types/diff": "^5.0.9",
+    "@types/jest": "^29.5.14",
+    "@types/minimatch": "^5.1.2",
+    "@types/node": "^22",
+    "concurrently": "^9.1.2",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "run-script-os": "^1.1.6",
+    "shx": "^0.3.4",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
